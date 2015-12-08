@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>JSF Tutorial!</title>
+</h:head>
+<h:body>
+	<h2>JDBC + JSP App</h2>
+	<h:form acceptcharset="UTF-8">
+		<h:outputLabel for="email" value="Adresse Email" />
+		<h:inputText id="email" value="#{userBean.user.email}" />
+
+		<h:outputLabel for="password" value="Mot de passe" />
+		<h:inputText id="password" value="#{userBean.user.password}" />
+
+		<h:commandButton action="#{userBean.add()}" value="Ajouter" />
+	</h:form>
+</h:body>
+</html>
