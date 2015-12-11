@@ -4,43 +4,52 @@ import java.util.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import org.apache.bval.constraints.Email;
-
 @Entity
-@Table(name = "alda.User")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Basic(fetch = FetchType.LAZY)
 	private int id;
 	
 	@Size(max = 45, message = "Le prénom doît avoir 45 caractères au maximum !")
-	@Basic
+	@Basic(fetch = FetchType.LAZY)
 	private String firstName;
 	
 	@Size(max = 45, message = "Le nom doît avoir 45 caractères au maximum !")
-	@Basic
+	@Basic(fetch = FetchType.LAZY)
 	private String lastName;
 	
-	@Size(max = 45, message = "Le mot de passe doît avoir 45 caractères au maximum !")
-	@Basic(optional = false)
+	@Size(min=7, max = 45, message = "Le mot de passe doît avoir entre 7 et 45 caractères !")
+	@Basic(fetch = FetchType.LAZY)
 	private String password;
 	
-	@Size(max = 200, message = "L'email doît avoir 200 caractères au maximum !")
-	@Basic(optional = false)
-	@Email
+	@Size(max = 200, message = "L'email doît avoir au maximum 200 caractères !")
+	@Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
+	        +"[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
+	        +"(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?",
+	             message="L'email n'a pas un format valide !")
+	@Basic(fetch = FetchType.LAZY)
 	private String email;
 	
+	@Temporal(TemporalType.DATE)
 	@Past(message = "La date doît être passée !")
+	@Basic(fetch = FetchType.LAZY)
 	private Date birthday;
 	
+	@Temporal(TemporalType.DATE)
+	@Basic(fetch = FetchType.LAZY)
 	private Date dateInscription;
 	
 	public User(){

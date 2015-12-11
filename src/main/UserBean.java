@@ -1,11 +1,8 @@
 package main;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.List;
 
 import javax.ejb.*;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -30,11 +27,12 @@ public class UserBean implements Serializable {
 		return user;
 	}
 
-	public void add(){
-		EntityManager em = entityManagerFactory.createEntityManager();
+	public String add(){
+		/*EntityManager em = entityManagerFactory.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(user);
-		em.getTransaction().commit();
+		em.getTransaction().commit();*/
+		return "profile.xhtml";
 	}
 
 	public String edit(){

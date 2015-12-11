@@ -3,20 +3,24 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title>JSF Tutorial!</title>
+	<title>Enregistrement</title>
 </h:head>
 <h:body>
-	<h2>JDBC + JSP App</h2>
+	<h2>Enregistrer un nouveau compte</h2>
 	<h:form acceptcharset="UTF-8">
-		<h:outputLabel for="email" value="Adresse Email" />
-		<h:inputText id="email" value="#{userBean.user.email}" />
+		<h:panelGrid columns="2" cellpadding="5">
+			<h:outputLabel for="email" value="Adresse Email" />
+			<p:inputText id="email" value="#{userBean.user.email}" />
 
-		<h:outputLabel for="password" value="Mot de passe" />
-		<h:inputText id="password" value="#{userBean.user.password}" />
-
-		<h:commandButton action="#{userBean.add()}" value="Ajouter" />
+			<h:outputLabel for="password" value="Mot de passe" />
+			<p:inputText id="password" value="#{userBean.user.password}" />
+			<f:facet name="footer">
+				<p:commandButton action="#{userBean.add()}" value="Enregister" />
+			</f:facet>
+		</h:panelGrid>
 	</h:form>
 </h:body>
 </html>
