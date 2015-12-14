@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>immotic</groupId>
-	<artifactId>immotic</artifactId>
+	<groupId>alda</groupId>
+	<artifactId>alda</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<developers>
@@ -54,9 +54,10 @@
 			<version>5.3</version>
 		</dependency>
 		<dependency>
-			<groupId>org.primefaces.material</groupId>
-			<artifactId>material-prime</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>net.bootsfaces</groupId>
+			<artifactId>bootsfaces</artifactId>
+			<version>0.6.6</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
@@ -64,7 +65,7 @@
 			<version>5.1.37</version>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>

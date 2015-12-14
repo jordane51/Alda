@@ -27,19 +27,29 @@ public class UserBean implements Serializable {
 		return user;
 	}
 
-	public String add(){
-		/*EntityManager em = entityManagerFactory.createEntityManager();
+	public String signUp(){
+		EntityManager em = entityManagerFactory.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(user);
-		em.getTransaction().commit();*/
+		em.getTransaction().commit();
+		logIn();
+		return "profile.xhtml";
+	}
+
+	public String logIn(){
+		EntityManager em = entityManagerFactory.createEntityManager();
+		Query query = em.createQuery("Select u FROM User u WHERE u.email = :email AND u.password = :password");
+		query.setParameter("email", user.getEmail());
+		query.setParameter("password", user.getPassword());
+		user = (User)query.getSingleResult();
 		return "profile.xhtml";
 	}
 
 	public String edit(){
 		EntityManager em = entityManagerFactory.createEntityManager();
-		String query = "UPDATE Individu i SET i.email = :email,"
+		String query = "UPDATE User i SET i.email = :email,"
 				+ " i.firstName = :firstName, i.lastName = :lastName,"
-				+ " i.password = :password, i.birthday = :birthday where i.id = :id";
+				+ " i.password = :password, i.birthday = :birthday WHERE i.id = :id";
 		Query q = em.createQuery(query, User.class);
 		q.setParameter("id", user.getId());
 		q.setParameter("email", user.getEmail());
@@ -48,7 +58,7 @@ public class UserBean implements Serializable {
 		q.setParameter("password", user.getPassword());
 		q.setParameter("birthday", user.getBirthday());
 		q.executeUpdate();
-		return "index.xhtml";
+		return "profile.xhtml";
 	}
 
 }
