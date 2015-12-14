@@ -7,6 +7,3 @@ CREATE TABLE `alda`.`User` (
   `birthday` DATE NULL,
   `dateInscription` DATE NOT NULL,
   PRIMARY KEY (`id`));
-  
-insert into alda.User(email, password) 
-values('hello@toto.com', '2014-03-21');	

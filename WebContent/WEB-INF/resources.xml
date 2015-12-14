@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tomee>
 <Resource id="userDataSource" type="javax.sql.DataSource">
-  JdbcUrl jdbc:mysql://javadb.cvg2bnkubcs1.us-west-2.rds.amazonaws.com:3306/alda
-  JdbcDriver com.mysql.jdbc.Driver
-  UserName db_user
-  Password GtPho9KPQVPK
-  JtaManaged true
+
 </Resource>
 </tomee>
