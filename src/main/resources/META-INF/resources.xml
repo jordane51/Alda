@@ -1,0 +1,9 @@
+<resources>
+  <Resource id="mysqlDS" type="javax.sql.DataSource">
+    JdbcDriver = com.mysql.jdbc.Driver
+    JdbcUrl = jdbc:mysql://localhost:3306/j2ee
+    UserName = j2ee
+    Password = j2ee
+    JtaManaged = true
+  </Resource>
+</resources>
