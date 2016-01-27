@@ -5,14 +5,17 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:b="http://bootsfaces.net/ui">
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<title>Connexion</title>
 </h:head>
 <h:body>
+	<ui:include src="navbar.xhtml"></ui:include>
 	<h2>Connexion</h2>
 	<h:form acceptcharset="UTF-8">
 		<b:container>
+
 			<b:panelGrid colSpans="2,10">
 				<h:outputLabel for="email" value="Adresse Email" />
 				<b:inputText span="4" id="email" value="#{userBean.user.email}" />
@@ -25,6 +28,5 @@
 			</b:panelGrid>
 		</b:container>
 	</h:form>
-	<h:link value="S'enregister" outcome="signup" />
 </h:body>
 </html>
