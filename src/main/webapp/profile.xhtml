@@ -31,9 +31,7 @@
 			<h:outputLabel for="birthday" value="Date de naissance" />
 			<b:inputText span="4" id="birthday" value="#{userBean.user.birthday}" />
 
-			<f:facet name="footer">
-				<b:commandButton action="#{userBean.edit()}" value="Appliquer" />
-			</f:facet>
+			<b:commandButton action="#{userBean.edit()}" value="Appliquer" />
 		</b:panelGrid>
      </b:container>
 	</h:form>
