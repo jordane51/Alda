@@ -19,35 +19,21 @@
 			<p>Vous pouvez regarder les annonces ou <a href="createListing.xhtm">déposer nouvelle annonce</a></p>
 		</b:jumbotron>
 		<div class="row">
-		<ui:repeat value="#{listingBean.listings}" var="listing">
-			<div class="listing col-md-4">
-				<h3>#{listing.location}</h3>
-				<p>#{listing.price}</p>
-				<p>#{listing.surface}</p>
-				<p>#{listing.description}</p>
-				<p>#{listing.email}</p>
-				<p>#{listing.number}</p>
-				<p>#{listing.location}</p>
-			</div>	
+		<ui:repeat value="#{listingBean.listings}" var="listing">	
+			<b:column col-sm="6" col-md="4">	
+				<b:thumbnail>
+					<img src="http://photosmosaic.com/wp-content/uploads/2013/08/5.png" alt="An image too"/>
+					<f:facet name="caption">
+						<h3>#{listing.location}</h3>
+						<p>#{listing.price}€, #{listing.surface} m²</p>
+						<div class="listing">
+							<p>#{listing.description}</p>
+						</div>
+						<b:button look="primary" value="Voir l'annonce" outcome="listing?listingId=#{listing.id}"/>				
+					</f:facet>			
+				</b:thumbnail>		
+			</b:column>	
 		</ui:repeat>
-		<div class="listing col-md-4">
-		<h3>test</h3>
-		</div>
-		<div class="listing col-md-4">
-		<h3>test</h3>
-		</div>
-		<div class="listing col-md-4">
-		<h3>test</h3>
-		</div>
-		<div class="listing col-md-4">
-		<h3>test</h3>
-		</div>
-		<div class="listing col-md-4">
-		<h3>test</h3>
-		</div>
-		<div class="listing col-md-4">
-		<h3>test</h3>
-		</div>
 		</div>
 	</b:container>
 </h:body>

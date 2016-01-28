@@ -1,4 +1,4 @@
 .listing{
-	background-color: orange;
-	min-height: 300px;
+	height: 80px;
+	overflow: hidden;
 }

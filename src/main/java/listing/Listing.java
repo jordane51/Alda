@@ -130,5 +130,4 @@ public class Listing implements Serializable{
 	public void setDateCreation(Date dateCreation) {
 		this.dateCreation = dateCreation;
 	}
-
 }
