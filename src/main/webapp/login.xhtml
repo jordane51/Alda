@@ -12,19 +12,18 @@
 </h:head>
 <h:body>
 	<ui:include src="navbar.xhtml"></ui:include>
-	<h2>Connexion</h2>
-	<h:form acceptcharset="UTF-8">
-		<b:container>
-
+	<b:container>
+		<h2>Connexion</h2>
+		<h:form acceptcharset="UTF-8">
 			<b:panelGrid colSpans="2,10">
 				<h:outputLabel for="email" value="Adresse Email" />
-				<b:inputText span="4" id="email" value="#{userBean.user.email}" />
+				<b:inputText id="email" value="#{userBean.user.email}" />
 
 				<h:outputLabel for="password" value="Mot de passe" />
-				<b:inputSecret span="4" id="password" value="#{userBean.user.password}" />
+				<b:inputSecret id="password" value="#{userBean.user.password}" />
 				<b:commandButton action="#{userBean.logIn()}" value="Se connecter" />
 			</b:panelGrid>
-		</b:container>
-	</h:form>
+		</h:form>
+	</b:container>
 </h:body>
 </html>

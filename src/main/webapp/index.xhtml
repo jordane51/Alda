@@ -9,6 +9,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<title>Accueil</title>
+	<h:outputStylesheet library="css" name="style.css"/>
 </h:head>
 <h:body>
 	<ui:include src="navbar.xhtml"></ui:include>
@@ -17,15 +18,37 @@
 			<h1>Bienvenue</h1>
 			<p>Vous pouvez regarder les annonces ou <a href="createListing.xhtm">déposer nouvelle annonce</a></p>
 		</b:jumbotron>
+		<div class="row">
 		<ui:repeat value="#{listingBean.listings}" var="listing">
-			<h3>#{listing.location}</h3>
-			<p>#{listing.price}</p>
-			<p>#{listing.surface}</p>
-			<p>#{listing.description}</p>
-			<p>#{listing.email}</p>
-			<p>#{listing.number}</p>
-			<p>#{listing.location}</p>
+			<div class="listing col-md-4">
+				<h3>#{listing.location}</h3>
+				<p>#{listing.price}</p>
+				<p>#{listing.surface}</p>
+				<p>#{listing.description}</p>
+				<p>#{listing.email}</p>
+				<p>#{listing.number}</p>
+				<p>#{listing.location}</p>
+			</div>	
 		</ui:repeat>
+		<div class="listing col-md-4">
+		<h3>test</h3>
+		</div>
+		<div class="listing col-md-4">
+		<h3>test</h3>
+		</div>
+		<div class="listing col-md-4">
+		<h3>test</h3>
+		</div>
+		<div class="listing col-md-4">
+		<h3>test</h3>
+		</div>
+		<div class="listing col-md-4">
+		<h3>test</h3>
+		</div>
+		<div class="listing col-md-4">
+		<h3>test</h3>
+		</div>
+		</div>
 	</b:container>
 </h:body>
 </html>
