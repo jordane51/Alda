@@ -24,21 +24,21 @@ public class Listing implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Basic(fetch = FetchType.LAZY)
+	@Basic(fetch = FetchType.EAGER)
 	private int id;
 	
-	@Basic(fetch = FetchType.LAZY)
+	@Basic(fetch = FetchType.EAGER)
 	private int price;
 	
-	@Basic(fetch = FetchType.LAZY)
+	@Basic(fetch = FetchType.EAGER)
 	private int surface;
 	
 	@Size(min=1, max = 45, message = "L'emplacement doît avoir entre 1 et 45 caractères !")
-	@Basic(fetch = FetchType.LAZY)
+	@Basic(fetch = FetchType.EAGER)
 	private String location;
 	
 	@Size(max = 200, message = "La description doît avoir au maximum 200 caractères !")
-	@Basic(fetch = FetchType.LAZY)
+	@Basic(fetch = FetchType.EAGER)
 	private String description;
 	
 	@Size(max = 200, message = "L'email doît avoir au maximum 200 caractères !")
@@ -46,18 +46,18 @@ public class Listing implements Serializable{
 	        +"[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
 	        +"(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?",
 	             message="L'email n'a pas un format valide !")
-	@Basic(fetch = FetchType.LAZY)
+	@Basic(fetch = FetchType.EAGER)
 	private String email;
 	
 	@Size(max = 45, message = "Le numéro doît avoir au maximum 45 caractères !")
-	@Basic(fetch = FetchType.LAZY)
+	@Basic(fetch = FetchType.EAGER)
 	private String number;
 	
 	@Temporal(TemporalType.DATE)
-	@Basic(fetch = FetchType.LAZY)
+	@Basic(fetch = FetchType.EAGER)
 	private Date dateCreation;
 	
-	@Basic(fetch = FetchType.LAZY)
+	@Basic(fetch = FetchType.EAGER)
 	private int userId;
 	
 	public Listing(){
