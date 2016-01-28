@@ -1,9 +1,9 @@
 <resources>
   <Resource id="mysqlDS" type="javax.sql.DataSource">
-    JdbcDriver = com.mysql.jdbc.Driver
-    JdbcUrl = jdbc:mysql://localhost:3306/j2ee
-    UserName = j2ee
-    Password = j2ee
-    JtaManaged = true
+    JdbcUrl jdbc:mysql://javadb.cvg2bnkubcs1.us-west-2.rds.amazonaws.com:3306/alda
+  JdbcDriver com.mysql.jdbc.Driver
+  UserName db_user
+  Password GtPho9KPQVPK
+  JtaManaged true
   </Resource>
 </resources>

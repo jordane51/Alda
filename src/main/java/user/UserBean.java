@@ -1,64 +1,49 @@
 package user;
 
 import java.io.Serializable;
+import java.util.Date;
 
-import javax.ejb.*;
+import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
-import javax.persistence.Query;
 
-@Named
+@ManagedBean
 @SessionScoped
-@TransactionManagement(TransactionManagementType.BEAN)
-
 public class UserBean implements Serializable {
-
-	private static final long serialVersionUID = 1L;
 	
-	@PersistenceUnit(unitName="userPersistenceUnit")
-	private EntityManagerFactory entityManagerFactory;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3093919644734308037L;
+
+	@EJB
+	private UserService service;
 	
 	private User user = new User();
 	
-	public User getUser(){		
+	public User getUser(){
 		return user;
 	}
 
 	public String signUp(){
-		EntityManager em = entityManagerFactory.createEntityManager();
-		em.getTransaction().begin();
-		em.persist(user);
-		em.getTransaction().commit();
+		user.setDateInscription(new Date());
+		service.add(user);
 		logIn();
-		return "profile.xhtml";
+		return "profile";
 	}
 
 	public String logIn(){
-		EntityManager em = entityManagerFactory.createEntityManager();
-		Query query = em.createQuery("Select u FROM User u WHERE u.email = :email AND u.password = :password");
-		query.setParameter("email", user.getEmail());
-		query.setParameter("password", user.getPassword());
-		user = (User)query.getSingleResult();
-		return "profile.xhtml";
+		User result = service.load(user);
+		if (result==null)
+			return "";
+		else {
+			user = result;
+			return "profile";
+		}
 	}
 
-	public String edit(){
-		EntityManager em = entityManagerFactory.createEntityManager();
-		String query = "UPDATE User i SET i.email = :email,"
-				+ " i.firstName = :firstName, i.lastName = :lastName,"
-				+ " i.password = :password, i.birthday = :birthday WHERE i.id = :id";
-		Query q = em.createQuery(query, User.class);
-		q.setParameter("id", user.getId());
-		q.setParameter("email", user.getEmail());
-		q.setParameter("firstName", user.getFirstName());
-		q.setParameter("lastName", user.getLastName());
-		q.setParameter("password", user.getPassword());
-		q.setParameter("birthday", user.getBirthday());
-		q.executeUpdate();
-		return "profile.xhtml";
+	public void edit(){
+		service.update(user);
 	}
 
 }
