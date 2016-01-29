@@ -19,6 +19,8 @@ public class UserBean implements Serializable {
 	@EJB
 	private UserService service;
 	
+	
+	
 	private User user = new User();
 	
 	public User getUser(){

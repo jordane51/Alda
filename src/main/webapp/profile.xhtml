@@ -4,36 +4,86 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<title>Mon profile</title>
+	<title>Mon profil</title>
+	<h:outputStylesheet library="css" name="style.css" />
 </h:head>
 <h:body>
 	<ui:include src="navbar.xhtml"></ui:include>
-	<h2>Mon profile</h2>
-	<h:form acceptcharset="UTF-8">
-		<b:container>
-        <b:panelGrid colSpans="2,10">
-			<h:outputLabel for="email" value="Adresse Email" />
-			<b:inputText span="4" id="email" value="#{userBean.user.email}" />
+	<b:container>
+		<h3>Mon profil</h3>
+		<b:panel collapsed="true">
+			<f:facet name="heading">
+				<h:outputText value="Chat" />
+			</f:facet>
+		</b:panel>
+		<b:panel>
+			<f:facet name="heading">
+				<h:outputText value="Mon compte" />
+			</f:facet>
+			<h:form acceptcharset="UTF-8">
+				<b:panelGrid colSpans="2,10">
+					<h:outputLabel for="email" value="Adresse Email" />
+					<b:inputText id="email" value="#{userBean.user.email}" />
 
-			<h:outputLabel for="password" value="Mot de passe" />
-			<b:inputSecret span="4" id="password" value="#{userBean.user.password}" />
+					<h:outputLabel for="password" value="Mot de passe" />
+					<b:inputSecret id="password" value="#{userBean.user.password}" />
 
-			<h:outputLabel for="firstName" value="Prénom" />
-			<b:inputText span="4" id="firstName" value="#{userBean.user.firstName}" />
+					<h:outputLabel for="firstName" value="Prénom" />
+					<b:inputText id="firstName" value="#{userBean.user.firstName}" />
 
-			<h:outputLabel for="lastName" value="Nom" />
-			<b:inputText span="4" id="lastName" value="#{userBean.user.lastName}" />
+					<h:outputLabel for="lastName" value="Nom" />
+					<b:inputText id="lastName" value="#{userBean.user.lastName}" />
 
-			<h:outputLabel for="birthday" value="Date de naissance" />
-			<b:inputText span="4" id="birthday" value="#{userBean.user.birthday}" />
+					<h:outputLabel for="birthday" value="Date de naissance" />
+					<b:inputText id="birthday" value="#{userBean.user.birthday}" />
 
-			<b:commandButton action="#{userBean.edit()}" value="Appliquer" />
-		</b:panelGrid>
-     </b:container>
-	</h:form>
+					<b:commandButton action="#{userBean.edit()}" value="Appliquer" />
+				</b:panelGrid>
+			</h:form>
+			<h:outputText value=" " />
+		</b:panel>
+		<br />
+		<b:panel>
+			<f:facet name="heading">
+				<h:outputText value="Mes préférences de notification" />
+			</f:facet>
+			yay
+			<h:outputText value=" " />
+		</b:panel>
+		<b:panel>
+			<f:facet name="heading">
+				<h:outputText value="Mes annonces" />
+			</f:facet>
+			<b:row>
+				<ui:repeat value="#{listingBean.listingsOwnedByUser}" var="listing">
+					<b:column col-sm="6" col-md="4">
+						<b:thumbnail>
+							<img
+								src="http://photosmosaic.com/wp-content/uploads/2013/08/5.png"
+								alt="An image too" />
+							<f:facet name="caption">
+								<h3>#{listing.location}</h3>
+								<p>#{listing.price}€, #{listing.surface} m²</p>
+								<div class="listing">
+									<p>#{listing.description}</p>
+								</div>
+								<h:form>
+									<b:buttonGroup>
+										<b:commandButton look="primary" value="Voir l'annonce"
+											action="#{listingBean.open(listing)}" />
+										<b:commandButton look="danger" value="Supprimer"
+											action="#{listingBean.delete(listing)}" />
+									</b:buttonGroup>
+								</h:form>
+							</f:facet>
+						</b:thumbnail>
+					</b:column>
+				</ui:repeat>
+			</b:row>
+		</b:panel>
+	</b:container>
 </h:body>
 </html>

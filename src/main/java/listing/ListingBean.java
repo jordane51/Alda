@@ -19,7 +19,8 @@ public class ListingBean implements Serializable {
 
 	@EJB
 	private ListingService service;
-	private Listing currentListing;
+	
+	private Listing currentListing = new Listing();
 	private List<Listing> listings = new ArrayList<Listing>();
 	
 	public String open(Listing l){
@@ -28,8 +29,26 @@ public class ListingBean implements Serializable {
 		return "listing";
 	}
 	
+	public String delete(Listing l){
+		//TODO
+		return "profile.xhtml";
+	}
+	
+	public void createListing(){
+		System.out.println("Yay"+this.currentListing.getLocation());
+	}
+	
 	public Listing getCurrentListing(){
 		return this.currentListing;
+	}
+	
+	public void setCurrentListing(Listing l){
+		this.currentListing = l;
+	}
+	
+	public List<Listing> getListingsOwnedByUser(){
+		listings = service.loadRecents();
+		return listings;
 	}
 	
 	public List<Listing> getRecentListings(){

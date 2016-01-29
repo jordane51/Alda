@@ -4,8 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<title>Connexion</title>
@@ -13,21 +12,22 @@
 <h:body>
 	<ui:include src="navbar.xhtml"></ui:include>
 	<b:container>
-		<h2>Connexion</h2>
-		<b:alert severity="info">
-		<b:icon name="cloud"/>
+		<h3>Connexion</h3>
+		<b:panel>
+			<b:alert severity="info">
+				<b:icon name="cloud" />
 		Demo account: test@test.com password
 		</b:alert>
-		<h:form acceptcharset="UTF-8">
-			<b:panelGrid colSpans="2,10">
-				<h:outputLabel for="email" value="Adresse Email" />
-				<b:inputText id="email" value="#{userBean.user.email}" />
-
-				<h:outputLabel for="password" value="Mot de passe" />
-				<b:inputSecret id="password" value="#{userBean.user.password}" />
-				<b:commandButton action="#{userBean.logIn()}" value="Se connecter" />
-			</b:panelGrid>
-		</h:form>
+			<h:form acceptcharset="UTF-8">
+				<b:panelGrid colSpans="2,10">
+					<h:outputLabel for="email" value="Adresse Email" />
+					<b:inputText id="email" value="#{userBean.user.email}" />
+					<h:outputLabel for="password" value="Mot de passe" />
+					<b:inputSecret id="password" value="#{userBean.user.password}" />
+					<b:commandButton action="#{userBean.logIn()}" value="Se connecter" />
+				</b:panelGrid>
+			</h:form>
+		</b:panel>
 	</b:container>
 </h:body>
 </html>

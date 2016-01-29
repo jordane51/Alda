@@ -12,9 +12,11 @@
 </h:head>
 <h:body>
 	<ui:include src="navbar.xhtml"></ui:include>
+	
+	<b:container>
+	<h3>Enregistrer un nouveau compte</h3>
+	<b:panel>	
 	<h:form acceptcharset="UTF-8">
-		<b:container>
-			<h2>Enregistrer un nouveau compte</h2>
 			<b:panelGrid colSpans="2,10">
 				<h:outputLabel for="email" value="Adresse Email" />
 				<b:inputText id="email" value="#{userBean.user.email}" />
@@ -23,7 +25,8 @@
 				<b:inputSecret id="password" value="#{userBean.user.password}" />
 				<b:commandButton action="#{userBean.signUp()}" value="Enregister" />
 			</b:panelGrid>
-		</b:container>
 	</h:form>
+	</b:panel>
+	</b:container>
 </h:body>
 </html>
