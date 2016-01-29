@@ -17,7 +17,21 @@
 <h:body>
 	<ui:include src="navbar.xhtml"></ui:include>
 	<b:container>
-	<h2>Listing: #{listingId}</h2>
+	<b:row>
+	<b:column col-sm="10" col-md="8" offsetMd="2" offsetSm="1">
+	<b:thumbnail>
+		<img src="http://photosmosaic.com/wp-content/uploads/2013/08/5.png" alt="An image too"/>
+		<f:facet name="caption">
+			<h2>#{listingBean.currentListing.description}</h2>
+			<h3>#{listingBean.currentListing.location}</h3>
+			<p>#{listingBean.currentListing.price}€, #{listingBean.currentListing.surface}m²</p>
+			<p>#{listingBean.currentListing.description}</p>
+			<p><b:icon name="envelope"> #{listingBean.currentListing.email}</b:icon></p>
+			<p><b:icon name="phone"> #{listingBean.currentListing.number}</b:icon></p>
+		</f:facet>			
+	</b:thumbnail>
+	</b:column>
+	</b:row>
 	</b:container>
 </h:body>
 </html>

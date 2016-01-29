@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<f:facet name="heading">
+		<h:outputText value="Mes annonces" />
+	</f:facet>
+	<h:form>
+		<b:commandButton look="primary" value="Ajouter une annonce"
+			action="addlisting" />
+	</h:form>
+	<b:row>
+		<ui:repeat value="#{listingBean.listingsOwnedByUser}" var="listing">
+			<b:column col-sm="6" col-md="4">
+				<b:thumbnail>
+					<img src="http://photosmosaic.com/wp-content/uploads/2013/08/5.png"
+						alt="An image too" />
+					<f:facet name="caption">
+						<h3>#{listing.location}</h3>
+						<p>#{listing.price}€, #{listing.surface} m²</p>
+						<div class="listing">
+							<p>#{listing.description}</p>
+						</div>
+						<h:form>
+							<b:buttonGroup>
+								<b:commandButton look="primary" value="Voir l'annonce"
+									action="#{listingBean.open(listing)}" />
+								<b:commandButton look="danger" value="Supprimer"
+									action="#{listingBean.delete(listing)}" />
+							</b:buttonGroup>
+						</h:form>
+					</f:facet>
+				</b:thumbnail>
+			</b:column>
+		</ui:repeat>
+	</b:row>
+</ui:composition>

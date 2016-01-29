@@ -7,7 +7,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-@ManagedBean
+@ManagedBean(name="userBean")
 @SessionScoped
 public class UserBean implements Serializable {
 	
@@ -18,6 +18,8 @@ public class UserBean implements Serializable {
 
 	@EJB
 	private UserService service;
+	
+	
 	
 	private User user = new User();
 	

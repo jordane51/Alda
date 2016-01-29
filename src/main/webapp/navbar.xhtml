@@ -10,9 +10,11 @@
 					rendered="#{!userBean.connected}"></b:navLink>
 				<b:navLink value="Inscription" outcome="signup"
 					rendered="#{!userBean.connected}"></b:navLink>
-				<b:navLink value="Profil" outcome="profile"
+				<b:navLink value="Mon profil" outcome="profile"
 					rendered="#{userBean.connected}"></b:navLink>
+				
 				<b:label text="Connecté" rendered="#{userBean.connected}" severity="info"/>
+				
 				<b:navCommandLink value="Se deconnecter"
 					action="#{userBean.disconnect()}" rendered="#{userBean.connected}"
 					outcome="index"></b:navCommandLink>

@@ -65,7 +65,7 @@ public class Listing implements Serializable{
 		description = null;
 		email = null;
 		number = null;
-		dateCreation = null;
+		dateCreation = new Date();
 	}
 	
 	public int getId() {

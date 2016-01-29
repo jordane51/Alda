@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<f:metadata>
+	<f:viewParam name="listingId" />
+</f:metadata>
+<h:head>
+	<title>Logement</title>
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+	<ui:include src="navbar.xhtml"></ui:include>
+	<b:container>
+		<h3>Publier une annonce</h3>
+		<b:panel>
+			<h:form>
+				<b:panelGrid colSpans="2,10">
+					<h:outputText value="Emplacement " />
+					<b:inputText value="#{createListingBean.newListing.location}">
+						<f:facet name="prepend">
+							<b:icon name="map-marker"></b:icon>
+						</f:facet>
+					</b:inputText>
+
+					<h:outputText value="Prix " />
+					<b:inputText value="#{createListingBean.newListing.price}">
+						<f:facet name="prepend">
+							<b:icon name="euro"></b:icon>
+						</f:facet>
+					</b:inputText>
+
+					<h:outputText value="Surface " />
+					<b:inputText value="#{createListingBean.newListing.surface}">
+						<f:facet name="prepend">
+							<b:icon name="tree-deciduous"></b:icon>
+						</f:facet>
+					</b:inputText>
+
+					<h:outputText value="Description " />
+					<b:inputTextarea placeholder="Décrivez votre logement ici" value="#{createListingBean.newListing.description}">
+						<f:facet name="prepend">
+							<b:icon name="comment"></b:icon>
+						</f:facet>
+					</b:inputTextarea>
+					
+					<h:outputText value="Email " />
+					<b:inputText value="#{createListingBean.newListing.email}">
+						<f:facet name="prepend">
+							<b:icon name="envelope"></b:icon>
+						</f:facet>
+					</b:inputText>
+					
+					<h:outputText value="Téléphone " />
+					<b:inputText value="#{createListingBean.newListing.number}">
+						<f:facet name="prepend">
+							<b:icon name="phone"></b:icon>
+						</f:facet>
+					</b:inputText>
+
+					<h:outputText value="Image " />
+					<h:inputFile value="#{demoBean.file1}" />
+
+				</b:panelGrid>
+				<b:commandButton look="primary" value="Publier l'annonce"
+					action="#{createListingBean.createListing}" />
+			</h:form>
+		</b:panel>
+	</b:container>
+</h:body>
+</html>
