@@ -57,6 +57,9 @@
 			<f:facet name="heading">
 				<h:outputText value="Mes annonces" />
 			</f:facet>
+			<h:form>
+				<b:commandButton look="primary" value="Ajouter une annonce" action="addlisting" />
+			</h:form>
 			<b:row>
 				<ui:repeat value="#{listingBean.listingsOwnedByUser}" var="listing">
 					<b:column col-sm="6" col-md="4">

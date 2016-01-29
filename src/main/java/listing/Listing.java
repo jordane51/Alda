@@ -23,7 +23,7 @@ public class Listing implements Serializable{
 	private static final long serialVersionUID = 8276506874316651726L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.TABLE)
 	@Basic(fetch = FetchType.EAGER)
 	private int id;
 	

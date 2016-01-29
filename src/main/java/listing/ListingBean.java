@@ -5,8 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.el.ELContext;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+
+import user.UserBean;
 
 @ManagedBean
 @SessionScoped
@@ -21,11 +26,11 @@ public class ListingBean implements Serializable {
 	private ListingService service;
 	
 	private Listing currentListing = new Listing();
+	private Listing newListing = new Listing();
 	private List<Listing> listings = new ArrayList<Listing>();
 	
 	public String open(Listing l){
 		this.currentListing = l;
-		System.out.println("Listing : "+l.getDescription());
 		return "listing";
 	}
 	
@@ -35,19 +40,32 @@ public class ListingBean implements Serializable {
 	}
 	
 	public void createListing(){
-		System.out.println("Yay"+this.currentListing.getLocation());
+		this.service.add(this.newListing);
+		System.out.println("Yay"+this.newListing.getLocation());
+	}
+	
+	public Listing getNewListing(){
+		return this.newListing;
+	}
+	
+	public void setNewListing(Listing l){
+		this.newListing = l;
 	}
 	
 	public Listing getCurrentListing(){
 		return this.currentListing;
 	}
-	
+
 	public void setCurrentListing(Listing l){
 		this.currentListing = l;
 	}
 	
 	public List<Listing> getListingsOwnedByUser(){
-		listings = service.loadRecents();
+		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+		UserBean userBean
+		    = (UserBean) FacesContext.getCurrentInstance().getApplication()
+		        .getELResolver().getValue(elContext, null, "userBean");
+		listings = service.listingsForUserId(userBean.getUser().getId());
 		return listings;
 	}
 	

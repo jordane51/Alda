@@ -16,10 +16,8 @@ public class ListingService {
 	private EntityManager em;
 	
 	public void add(Listing listing){
-		em.getTransaction().begin();
 		em.persist(listing);
-		em.getTransaction().commit();
-		
+		em.flush();
 	}
 	
 	public List<Listing> loadAll(){
@@ -31,6 +29,12 @@ public class ListingService {
 	public List<Listing> loadRecents(){
 		Query query = em.createQuery("SELECT l FROM Listing l ORDER by l.id DESC");
 		List<Listing> listings = query.setMaxResults(12).getResultList();
+		return listings;
+	}
+	
+	public List<Listing> listingsForUserId(int userId){
+		Query query = em.createQuery("SELECT l FROM Listing l WHERE l.userId =" + userId);
+		List<Listing> listings = query.getResultList();
 		return listings;
 	}
 }
