@@ -1,2 +1,2 @@
-DROP TABLE IF_EXISTS `alda`.`User`;
-DROP TABLE IF_EXISTS `alda`.`Listing`;
+DROP TABLE IF EXISTS `alda`.`User`;
+DROP TABLE IF EXISTS `alda`.`Listing`;

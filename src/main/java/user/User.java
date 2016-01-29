@@ -1,5 +1,6 @@
 package user;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Basic;
@@ -15,7 +16,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
-public class User {
+public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -56,7 +57,7 @@ public class User {
 		lastName = null;
 		email = null;
 		password = null;
-		birthday = null;
+		birthday = new Date();
 		dateInscription = new Date();
 	}
 	

@@ -1,4 +1,4 @@
 insert into alda.User(id, email, password, dateInscription) 
-values(10, 'hello@toto.com', '2014-03-21', date('2014-03-21'));
+values(10, 'test@test.com', 'password', date('2014-03-21'));
 insert into alda.Listing(price, surface, location, email, dateCreation, userId)
-values('170K', '50m2', 'Bordeaux', 'hello@toto.com', date('2014-03-21'), 10);
+values('170K', '50m2', 'Bordeaux', 'test@test.com', date('2014-03-21'), 10);

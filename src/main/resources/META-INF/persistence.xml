@@ -6,7 +6,9 @@
 	<persistence-unit name="mysqlPersistenceUnit">
 		<jta-data-source>mysqlDS</jta-data-source>
 		<class>user.User</class>
+		<class>listing.Listing</class>
 		<properties>
+			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)" />
 			<property name="openjpa.jdbc.DBDictionary" value="mysql" />
 			<!-- Cette propriété active la log des requêtes SQL réalisées par OpenJPA -->
 			<property name="openjpa.Log" value="SQL=Trace" />

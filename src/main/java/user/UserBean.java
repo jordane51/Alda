@@ -21,23 +21,37 @@ public class UserBean implements Serializable {
 	
 	private User user = new User();
 	
+	private boolean connected = false;
+	
+	public boolean getConnected(){
+		return connected;
+	}	
+	
 	public User getUser(){
 		return user;
+	}
+	
+	public String disconnect(){
+		connected = false;
+		user = new User();
+		return "index";
 	}
 
 	public String signUp(){
 		user.setDateInscription(new Date());
 		service.add(user);
-		logIn();
+		//logIn();
 		return "profile";
 	}
 
 	public String logIn(){
+		System.out.println(user.getEmail());
 		User result = service.load(user);
 		if (result==null)
 			return "";
 		else {
 			user = result;
+			connected = true;
 			return "profile";
 		}
 	}

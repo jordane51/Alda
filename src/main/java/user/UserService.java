@@ -1,5 +1,6 @@
 package user;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -40,7 +41,11 @@ public class UserService {
 		q.setParameter("firstName", user.getFirstName());
 		q.setParameter("lastName", user.getLastName());
 		q.setParameter("password", user.getPassword());
-		q.setParameter("birthday", user.getBirthday());
+		System.out.println(user.getBirthday());
+		if (user.getBirthday() != null)
+			q.setParameter("birthday", user.getBirthday());
+		else
+			q.setParameter("birthday", new Date());
 		q.executeUpdate();
 	}
 }
