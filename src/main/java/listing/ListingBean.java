@@ -19,8 +19,23 @@ public class ListingBean implements Serializable {
 
 	@EJB
 	private ListingService service;
-	
+	private Listing currentListing;
 	private List<Listing> listings = new ArrayList<Listing>();
+	
+	public String open(Listing l){
+		this.currentListing = l;
+		System.out.println("Listing : "+l.getDescription());
+		return "listing";
+	}
+	
+	public Listing getCurrentListing(){
+		return this.currentListing;
+	}
+	
+	public List<Listing> getRecentListings(){
+		listings = service.loadRecents();
+		return listings;
+	}
 	
 	public List<Listing> getListings(){
 		listings = service.loadAll();

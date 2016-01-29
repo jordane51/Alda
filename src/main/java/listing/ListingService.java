@@ -27,4 +27,10 @@ public class ListingService {
 		List<Listing> listings = query.getResultList();
 		return listings;
 	}
+	
+	public List<Listing> loadRecents(){
+		Query query = em.createQuery("SELECT l FROM Listing l ORDER by l.id DESC");
+		List<Listing> listings = query.setMaxResults(12).getResultList();
+		return listings;
+	}
 }
