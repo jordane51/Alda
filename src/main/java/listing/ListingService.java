@@ -19,6 +19,10 @@ public class ListingService {
 		em.persist(listing);
 	}
 	
+	public void remove(Listing listing){
+		em.remove(listing);
+	}
+	
 	public List<Listing> loadAll(){
 		Query query = em.createQuery("SELECT l FROM Listing l");
 		List<Listing> listings = query.getResultList();

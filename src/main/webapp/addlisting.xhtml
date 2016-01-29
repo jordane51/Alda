@@ -47,13 +47,24 @@
 							<b:icon name="comment"></b:icon>
 						</f:facet>
 					</b:inputTextarea>
-
-					<h:outputText value="Image " />
-					<b:inputText>
+					
+					<h:outputText value="Email " />
+					<b:inputText value="#{createListingBean.newListing.email}">
 						<f:facet name="prepend">
-							<b:icon name="picture"></b:icon>
+							<b:icon name="envelope"></b:icon>
 						</f:facet>
 					</b:inputText>
+					
+					<h:outputText value="Téléphone " />
+					<b:inputText value="#{createListingBean.newListing.number}">
+						<f:facet name="prepend">
+							<b:icon name="phone"></b:icon>
+						</f:facet>
+					</b:inputText>
+
+					<h:outputText value="Image " />
+					<h:inputFile value="#{demoBean.file1}" />
+
 				</b:panelGrid>
 				<b:commandButton look="primary" value="Publier l'annonce"
 					action="#{createListingBean.createListing}" />

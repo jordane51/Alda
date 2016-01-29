@@ -35,7 +35,7 @@ public class ListingBean implements Serializable {
 	}
 	
 	public String delete(Listing l){
-		//TODO
+		service.remove(l);
 		return "profile.xhtml";
 	}
 	
