@@ -17,7 +17,6 @@ public class ListingService {
 	
 	public void add(Listing listing){
 		em.persist(listing);
-		em.flush();
 	}
 	
 	public List<Listing> loadAll(){

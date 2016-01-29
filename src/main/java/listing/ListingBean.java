@@ -39,11 +39,6 @@ public class ListingBean implements Serializable {
 		return "profile.xhtml";
 	}
 	
-	public void createListing(){
-		this.service.add(this.newListing);
-		System.out.println("Yay"+this.newListing.getLocation());
-	}
-	
 	public Listing getNewListing(){
 		return this.newListing;
 	}
