@@ -12,13 +12,23 @@
 					rendered="#{!userBean.connected}"></b:navLink>
 				<b:navLink value="Mon profil" outcome="profile"
 					rendered="#{userBean.connected}"></b:navLink>
-				
-				<b:label text="Connecté" rendered="#{userBean.connected}" severity="info"/>
-				
+
+				<b:label text="Connecté" rendered="#{userBean.connected}"
+					severity="info" />
+
 				<b:navCommandLink value="Se deconnecter"
 					action="#{userBean.disconnect()}" rendered="#{userBean.connected}"
 					outcome="index"></b:navCommandLink>
 			</b:navbarLinks>
 		</h:form>
+		<h:form class="navbar-form navbar-right"
+			role="search">
+			<div class="form-group">
+				<b:inputText class="form-control"
+					value="#{searchBean.keyword}" />
+			</div>
+			<b:commandButton class="btn btn-default" action="#{searchBean.search()}">Rechercher</b:commandButton>
+		</h:form>
+
 	</b:navBar>
 </ui:composition>

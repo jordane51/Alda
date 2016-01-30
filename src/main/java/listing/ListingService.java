@@ -40,4 +40,12 @@ public class ListingService {
 		List<Listing> listings = query.getResultList();
 		return listings;
 	}
+	
+	public List<Listing> listingsByKeyword(String keyword){
+		Query query = em.createQuery("SELECT l FROM Listing l WHERE l.location LIKE :key1 OR l.description LIKE :key2");
+		query.setParameter("key1", "%" + keyword + "%");
+		query.setParameter("key2", "%" + keyword + "%");
+		List<Listing> listings = query.getResultList();
+		return listings;
+	}
 }
